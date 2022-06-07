@@ -3,6 +3,7 @@ import CategoryList from "../components/CategoryList";
 import NotesList from "../components/NotesList";
 import AddNoteModal from "../components/AddNoteModal";
 import UpdateDeleteNoteModal from "../components/UpdateDeleteNoteModal";
+import AddCategoryModal from "../components/AddCategoryModal";
 
 const Notes = () => {
   return (
@@ -27,7 +28,11 @@ const Notes = () => {
               <div className="w-100">
                 <h4 className="d-flex justify-content-between">
                   <span>Categories</span>
-                  <i class="bi bi-plus-lg cursor-pointer"></i>
+                  <i
+                    class="bi bi-plus-lg cursor-pointer"
+                    data-bs-toggle="modal"
+                    data-bs-target="#categoryModal"
+                  ></i>
                 </h4>
                 <CategoryList />
               </div>
@@ -55,6 +60,7 @@ const Notes = () => {
       </main>
       <AddNoteModal />
       <UpdateDeleteNoteModal />
+      <AddCategoryModal />
     </>
   );
 };
