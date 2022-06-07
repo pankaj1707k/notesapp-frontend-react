@@ -2,6 +2,7 @@ import React from "react";
 import CategoryList from "../components/CategoryList";
 import NotesList from "../components/NotesList";
 import AddNoteModal from "../components/AddNoteModal";
+import UpdateDeleteNoteModal from "../components/UpdateDeleteNoteModal";
 
 const Notes = () => {
   return (
@@ -53,6 +54,7 @@ const Notes = () => {
         </div>
       </main>
       <AddNoteModal />
+      <UpdateDeleteNoteModal />
     </>
   );
 };

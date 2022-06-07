@@ -7,7 +7,12 @@ const NotesListItem = () => {
       <p className="m-0 card-body">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id elit
         hendrerit, hendrerit tellus vitae, ullamcorper libero.
-        <Link to="#" className="stretched-link"></Link>
+        <Link
+          to="#"
+          className="stretched-link"
+          data-bs-toggle="modal"
+          data-bs-target="#noteModal"
+        ></Link>
       </p>
     </li>
   );
