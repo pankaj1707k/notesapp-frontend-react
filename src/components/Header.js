@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
       <div className="container">
-        <Link to="#" className="navbar-brand">
+        <Link to="#" className="navbar-brand fs-3">
           NotesApp
         </Link>
         <NavbarToggler />
