@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryList from "../components/CategoryList";
+import NotesList from "../components/NotesList";
 
 const Notes = () => {
   return (
@@ -29,7 +30,19 @@ const Notes = () => {
             </div>
           </div>
         </div>
-        <div className="col-11 col-md-8 px-3 py-2">Notes list section</div>
+        <div className="col-11 col-md-8 px-3 py-2">
+          <div className="d-flex gap-2">
+            <input
+              type="text"
+              className="form-control fs-5"
+              placeholder="Search"
+            />
+            <button type="button" className="btn btn-success">
+              New
+            </button>
+          </div>
+          <NotesList />
+        </div>
       </div>
     </main>
   );
