@@ -7,7 +7,7 @@ const Home = () => {
       <h1 className="display-4 mt-5 home-phrase">
         <strong>Create and access your sticky notes anywhere</strong>
       </h1>
-      <Link to="/" className="btn btn-lg btn-primary mt-3">
+      <Link to="/signup" className="btn btn-lg btn-primary mt-3">
         Get Started
       </Link>
     </main>
