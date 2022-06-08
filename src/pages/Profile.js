@@ -1,6 +1,7 @@
 import React from "react";
 import DefaultProfilePic from "../assets/blank-profile-picture.png";
 import EditProfileModal from "../components/EditProfileModal";
+import ChangePasswordModal from "../components/ChangePasswordModal";
 
 const Profile = () => {
   return (
@@ -43,7 +44,12 @@ const Profile = () => {
             </button>
           </div>
           <div className="col-12 col-sm-4">
-            <button type="button" className="btn btn-primary w-100">
+            <button
+              type="button"
+              className="btn btn-primary w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#changePasswordModal"
+            >
               Change Password
             </button>
           </div>
@@ -55,6 +61,7 @@ const Profile = () => {
         </div>
       </main>
       <EditProfileModal />
+      <ChangePasswordModal />
     </>
   );
 };
