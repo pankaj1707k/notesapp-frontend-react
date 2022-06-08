@@ -19,6 +19,11 @@ const NavList = () => {
           Notes
         </Link>
       </li>
+      <li className="nav-item fs-5">
+        <Link className="nav-link" to="/profile">
+          <i class="bi bi-person-circle"></i>
+        </Link>
+      </li>
     </ul>
   );
 };
