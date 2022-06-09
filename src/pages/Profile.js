@@ -4,31 +4,40 @@ import EditProfileModal from "../components/EditProfileModal";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 
 const Profile = () => {
+  const profileData = {
+    id: 1,
+    name: "FullName",
+    username: "SomeUsername",
+    email: "user@test.com",
+    phone: "1023456789",
+    profile_img: DefaultProfilePic,
+  };
+
   return (
     <>
       <main className="container">
         <div className="row mt-4">
           <div className="col mx-auto col-sm-4 mb-4">
             <img
-              src={DefaultProfilePic}
+              src={profileData.profile_img}
               alt="blank-profile-picture"
               className="img-thumbnail"
             />
           </div>
           <div className="col-sm-1"></div>
           <div className="col col-sm-7 ps-4 ps-sm-0 text-condensed-3">
-            <p className="fs-3 mb-2 text-condensed-2">Full Name</p>
+            <p className="fs-3 mb-2 text-condensed-2">{profileData.name}</p>
             <p className="fs-5 mb-2">
               <i className="bi bi-at"></i>
-              <span className="ms-3">Username</span>
+              <span className="ms-3">{profileData.username}</span>
             </p>
             <p className="fs-5 mb-2">
               <i className="bi bi-envelope"></i>
-              <span className="ms-3">Email</span>
+              <span className="ms-3">{profileData.email}</span>
             </p>
             <p className="fs-5 mb-2">
               <i className="bi bi-telephone"></i>
-              <span className="ms-3">Phone Number</span>
+              <span className="ms-3">{profileData.phone}</span>
             </p>
           </div>
         </div>
@@ -60,7 +69,7 @@ const Profile = () => {
           </div>
         </div>
       </main>
-      <EditProfileModal />
+      <EditProfileModal data={profileData} />
       <ChangePasswordModal />
     </>
   );

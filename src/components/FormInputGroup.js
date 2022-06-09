@@ -13,6 +13,8 @@ const FormInputGroup = (props) => {
         placeholder={props.name}
         aria-label={props.name}
         aria-describedby="basic-addon1"
+        value={props.value}
+        onChange={props.onChange}
       />
     </div>
   );

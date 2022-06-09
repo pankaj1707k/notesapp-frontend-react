@@ -1,7 +1,7 @@
 import React from "react";
 import EditProfileForm from "./EditProfileForm";
 
-const EditProfileModal = () => {
+const EditProfileModal = (props) => {
   return (
     <div
       className="modal fade"
@@ -21,7 +21,7 @@ const EditProfileModal = () => {
             ></button>
           </div>
           <div className="modal-body">
-            <EditProfileForm />
+            <EditProfileForm data={props.data} />
           </div>
         </div>
       </div>
