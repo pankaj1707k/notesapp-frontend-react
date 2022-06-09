@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 const UpdateDeleteNoteModal = (props) => {
+  var [noteContent, setNoteContent] = useState(props.note.content);
+
+  const handleNoteContent = (e) => {
+    setNoteContent(e.target.value);
+  };
+
+  const handleUpdate = (e) => {
+    console.log(noteContent);
+    // API call to update data
+  };
+
+  const handleDelete = (e) => {
+    console.log(noteContent);
+    // API call to delete note
+  };
+
   return (
     <div className="modal fade" id="noteModal" tabIndex="-1" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered">
@@ -18,7 +34,8 @@ const UpdateDeleteNoteModal = (props) => {
             <textarea
               className="form-control"
               placeholder="Write something..."
-              value={props.note.content}
+              value={noteContent}
+              onChange={handleNoteContent}
             />
           </div>
           <div className="modal-footer">
@@ -26,10 +43,15 @@ const UpdateDeleteNoteModal = (props) => {
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
+              onClick={handleUpdate}
             >
               Update
             </button>
-            <button type="button" className="btn btn-danger">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleDelete}
+            >
               Delete
             </button>
           </div>
