@@ -74,7 +74,6 @@ const Notes = () => {
         </div>
       </main>
       <AddNoteModal />
-      <UpdateDeleteNoteModal />
       <AddCategoryModal />
     </>
   );

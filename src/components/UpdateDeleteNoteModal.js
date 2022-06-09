@@ -1,6 +1,6 @@
 import React from "react";
 
-const UpdateDeleteNoteModal = () => {
+const UpdateDeleteNoteModal = (props) => {
   return (
     <div class="modal fade" id="noteModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -18,6 +18,7 @@ const UpdateDeleteNoteModal = () => {
             <textarea
               className="form-control"
               placeholder="Write something..."
+              value={props.note.content}
             />
           </div>
           <div class="modal-footer">
