@@ -20,7 +20,7 @@ const Profile = () => {
           <div className="col mx-auto col-sm-4 mb-4">
             <img
               src={profileData.profile_img}
-              alt="blank-profile-picture"
+              alt="blank-profile"
               className="img-thumbnail"
             />
           </div>
