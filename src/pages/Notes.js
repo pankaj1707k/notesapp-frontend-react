@@ -32,7 +32,7 @@ const Notes = () => {
             data-bs-target="#categorylist"
             aria-controls="categorylist"
           >
-            <i class="bi bi-arrow-bar-right"></i>
+            <i className="bi bi-arrow-bar-right"></i>
           </button>
           <div
             className="offcanvas-md offcanvas-start col-md-4 px-4 py-2 border border-primary border-top-0 border-bottom-0 border-start-0"
@@ -44,7 +44,7 @@ const Notes = () => {
                 <h4 className="d-flex justify-content-between">
                   <span>Categories</span>
                   <i
-                    class="bi bi-plus-lg cursor-pointer"
+                    className="bi bi-plus-lg cursor-pointer"
                     data-bs-toggle="modal"
                     data-bs-target="#categoryModal"
                   ></i>
