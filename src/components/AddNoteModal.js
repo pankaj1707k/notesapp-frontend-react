@@ -2,35 +2,38 @@ import React from "react";
 
 const AddNoteModal = () => {
   return (
-    <div class="modal fade" id="newNoteModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              New Note
-            </h5>
+    <div
+      className="modal fade"
+      id="newNoteModal"
+      tabIndex="-1"
+      aria-hidden="true"
+    >
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">New Note</h5>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             <textarea
               className="form-control"
               placeholder="Write something..."
             />
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">
+            <button type="button" className="btn btn-primary">
               Add
             </button>
           </div>
