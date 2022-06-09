@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddNoteModal = () => {
+  var [noteContent, setNoteContent] = useState("");
+
+  const handleNoteContent = (e) => {
+    setNoteContent(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    console.log(noteContent);
+    // API call to create new note
+  };
+
   return (
     <div
       className="modal fade"
@@ -23,6 +34,8 @@ const AddNoteModal = () => {
             <textarea
               className="form-control"
               placeholder="Write something..."
+              value={noteContent}
+              onChange={handleNoteContent}
             />
           </div>
           <div className="modal-footer">
@@ -33,7 +46,12 @@ const AddNoteModal = () => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              data-bs-dismiss="modal"
+              onClick={handleSubmit}
+            >
               Add
             </button>
           </div>
