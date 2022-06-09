@@ -2,7 +2,6 @@ import React from "react";
 import CategoryList from "../components/CategoryList";
 import NotesList from "../components/NotesList";
 import AddNoteModal from "../components/AddNoteModal";
-import UpdateDeleteNoteModal from "../components/UpdateDeleteNoteModal";
 import AddCategoryModal from "../components/AddCategoryModal";
 
 const Notes = () => {
@@ -19,6 +18,12 @@ const Notes = () => {
       id: 3,
       content: "Sample note 3",
     },
+  ];
+
+  const categories = [
+    { name: "category 1" },
+    { name: "category 2" },
+    { name: "category 3" },
   ];
 
   return (
@@ -73,7 +78,7 @@ const Notes = () => {
           </div>
         </div>
       </main>
-      <AddNoteModal />
+      <AddNoteModal categories={categories} />
       <AddCategoryModal />
     </>
   );

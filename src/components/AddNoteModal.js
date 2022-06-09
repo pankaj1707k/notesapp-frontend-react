@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 
-const AddNoteModal = () => {
+const AddNoteModal = (props) => {
   var [noteContent, setNoteContent] = useState("");
+  var [category, setCategory] = useState("");
 
   const handleNoteContent = (e) => {
     setNoteContent(e.target.value);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -37,6 +42,18 @@ const AddNoteModal = () => {
               value={noteContent}
               onChange={handleNoteContent}
             />
+            <select
+              className="form-select mt-3"
+              value={category}
+              onChange={handleCategory}
+            >
+              <option selected value="">
+                Select category
+              </option>
+              {props.categories.map((category) => (
+                <option value={category.name}>{category.name}</option>
+              ))}
+            </select>
           </div>
           <div className="modal-footer">
             <button
