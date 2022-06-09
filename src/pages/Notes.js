@@ -6,6 +6,21 @@ import UpdateDeleteNoteModal from "../components/UpdateDeleteNoteModal";
 import AddCategoryModal from "../components/AddCategoryModal";
 
 const Notes = () => {
+  const dummyNotes = [
+    {
+      id: 1,
+      content: "Sample note 1",
+    },
+    {
+      id: 2,
+      content: "Sample note 2",
+    },
+    {
+      id: 3,
+      content: "Sample note 3",
+    },
+  ];
+
   return (
     <>
       <main className="container">
@@ -54,7 +69,7 @@ const Notes = () => {
                 New
               </button>
             </div>
-            <NotesList />
+            <NotesList notes={dummyNotes} />
           </div>
         </div>
       </main>

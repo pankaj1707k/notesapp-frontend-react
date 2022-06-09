@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NotesListItem = () => {
+const NotesListItem = (props) => {
   return (
     <li className="card mb-2">
       <p className="m-0 card-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id elit
-        hendrerit, hendrerit tellus vitae, ullamcorper libero.
+        {props.value}
         <Link
           to="#"
           className="stretched-link"
