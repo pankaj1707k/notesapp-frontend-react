@@ -6,6 +6,7 @@ const EditProfileForm = (props) => {
   var [username, setUsername] = useState(props.data.username);
   var [email, setEmail] = useState(props.data.email);
   var [phone, setPhone] = useState(props.data.phone);
+  var [profileImg, setProfileImg] = useState("");
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -19,9 +20,20 @@ const EditProfileForm = (props) => {
     setPhone(e.target.value);
   };
 
+  const handleProfileImg = (e) => {
+    setProfileImg(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ username, email, phone });
+    let profile = {
+      username: username,
+      email: email,
+      phone: phone,
+      profile_img: profileImg !== "" ? profileImg : props.data.profile_img,
+    };
+    props.handleUpdate(profile);
+    setProfileImg("");
   };
 
   return (
@@ -50,9 +62,15 @@ const EditProfileForm = (props) => {
       <FormInputGroup
         icon="bi bi-card-image"
         type="file"
-        name="Profile Picture"
+        name="ProfilePicture"
+        value={profileImg}
+        onChange={handleProfileImg}
       />
-      <button type="submit" className="btn btn-primary w-100">
+      <button
+        type="submit"
+        className="btn btn-primary w-100"
+        data-bs-dismiss="modal"
+      >
         Update
       </button>
     </form>

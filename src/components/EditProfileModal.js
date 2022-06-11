@@ -21,7 +21,10 @@ const EditProfileModal = (props) => {
             ></button>
           </div>
           <div className="modal-body">
-            <EditProfileForm data={props.data} />
+            <EditProfileForm
+              data={props.data}
+              handleUpdate={props.handleUpdate}
+            />
           </div>
         </div>
       </div>
