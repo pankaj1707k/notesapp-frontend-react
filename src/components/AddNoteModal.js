@@ -13,8 +13,9 @@ const AddNoteModal = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(noteContent);
-    // API call to create new note
+    let id = Math.floor(Math.random() * 100); // remove if calling API
+    let newNote = { id: id, content: noteContent, category: category };
+    props.handleCreate(newNote);
   };
 
   return (

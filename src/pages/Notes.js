@@ -42,6 +42,10 @@ const Notes = () => {
     setNotes(notelist);
   };
 
+  const addNote = (newNote) => {
+    setNotes([newNote, ...notes]);
+  };
+
   const deleteCategory = (name) => {
     setCategories(categories.filter((cat) => cat.name !== name));
   };
@@ -106,7 +110,7 @@ const Notes = () => {
           </div>
         </div>
       </main>
-      <AddNoteModal categories={categories} />
+      <AddNoteModal categories={categories} handleCreate={addNote} />
       <AddCategoryModal />
     </>
   );
