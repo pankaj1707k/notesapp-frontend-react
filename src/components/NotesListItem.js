@@ -11,7 +11,7 @@ const NotesListItem = (props) => {
       >
         <p className="m-0 card-body">{props.note.content}</p>
       </li>
-      <UpdateDeleteNoteModal note={props.note} />
+      <UpdateDeleteNoteModal note={props.note} categories={props.categories} />
     </>
   );
 };

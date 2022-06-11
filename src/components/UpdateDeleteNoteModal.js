@@ -2,9 +2,14 @@ import React, { useState } from "react";
 
 const UpdateDeleteNoteModal = (props) => {
   var [noteContent, setNoteContent] = useState(props.note.content);
+  var [category, setCategory] = useState(props.note.category);
 
   const handleNoteContent = (e) => {
     setNoteContent(e.target.value);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
   };
 
   const handleUpdate = (e) => {
@@ -42,6 +47,23 @@ const UpdateDeleteNoteModal = (props) => {
               value={noteContent}
               onChange={handleNoteContent}
             />
+            <select
+              className="form-select mt-3"
+              value={category}
+              onChange={handleCategory}
+            >
+              {props.categories.map((cat) =>
+                cat.name === category ? (
+                  <option selected key={cat.name} value={cat.name}>
+                    {cat.name}
+                  </option>
+                ) : (
+                  <option key={cat.name} value={cat.name}>
+                    {cat.name}
+                  </option>
+                )
+              )}
+            </select>
           </div>
           <div className="modal-footer">
             <button

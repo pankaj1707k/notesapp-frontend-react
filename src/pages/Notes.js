@@ -9,14 +9,17 @@ const Notes = () => {
     {
       id: 1,
       content: "Sample note 1",
+      category: "category 1",
     },
     {
       id: 2,
       content: "Sample note 2",
+      category: "category 2",
     },
     {
       id: 3,
       content: "Sample note 3",
+      category: "category 3",
     },
   ];
 
@@ -74,7 +77,7 @@ const Notes = () => {
                 New
               </button>
             </div>
-            <NotesList notes={dummyNotes} />
+            <NotesList notes={dummyNotes} categories={categories} />
           </div>
         </div>
       </main>
