@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-const AddCategoryModal = () => {
+const AddCategoryModal = (props) => {
+  var [name, setName] = useState("");
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    let newCategory = { name: name };
+    props.handleCreate(newCategory);
+  };
+
   return (
     <div
       className="modal fade"
@@ -24,6 +35,8 @@ const AddCategoryModal = () => {
               type="text"
               className="form-control"
               placeholder="Category name"
+              value={name}
+              onChange={handleName}
             />
           </div>
           <div className="modal-footer">
@@ -34,7 +47,12 @@ const AddCategoryModal = () => {
             >
               Cancel
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              data-bs-dismiss="modal"
+              onClick={handleSubmit}
+            >
               Add
             </button>
           </div>

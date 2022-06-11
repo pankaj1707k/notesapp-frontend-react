@@ -50,6 +50,10 @@ const Notes = () => {
     setCategories(categories.filter((cat) => cat.name !== name));
   };
 
+  const addCategory = (category) => {
+    setCategories([...categories, category]);
+  };
+
   return (
     <>
       <main className="container">
@@ -111,7 +115,7 @@ const Notes = () => {
         </div>
       </main>
       <AddNoteModal categories={categories} handleCreate={addNote} />
-      <AddCategoryModal />
+      <AddCategoryModal handleCreate={addCategory} />
     </>
   );
 };
