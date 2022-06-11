@@ -13,13 +13,14 @@ const UpdateDeleteNoteModal = (props) => {
   };
 
   const handleUpdate = (e) => {
-    console.log(noteContent);
-    // API call to update data
+    let updatedNote = props.note;
+    updatedNote.content = noteContent;
+    updatedNote.category = category;
+    props.handleUpdate(updatedNote);
   };
 
   const handleDelete = (e) => {
-    console.log(noteContent);
-    // API call to delete note
+    props.handleDelete(props.note.id);
   };
 
   return (

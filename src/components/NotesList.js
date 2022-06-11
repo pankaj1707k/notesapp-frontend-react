@@ -6,6 +6,8 @@ const NotesList = (props) => {
     <NotesListItem
       key={note.id.toString()}
       note={note}
+      handleDelete={props.handleDelete}
+      handleUpdate={props.handleUpdate}
       categories={props.categories}
     />
   ));

@@ -5,7 +5,7 @@ import AddNoteModal from "../components/AddNoteModal";
 import AddCategoryModal from "../components/AddCategoryModal";
 
 const Notes = () => {
-  const dummyNotes = [
+  var dummyNotes = [
     {
       id: 1,
       content: "Sample note 1",
@@ -29,7 +29,18 @@ const Notes = () => {
     { name: "category 3" },
   ];
 
+  var [notes, setNotes] = useState(dummyNotes);
   var [categories, setCategories] = useState(dummyCategories);
+
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note.id !== id));
+  };
+
+  const updateNote = (updatedNote) => {
+    let notelist = notes.filter((note) => note.id !== updatedNote.id);
+    notelist = [updatedNote, ...notelist];
+    setNotes(notelist);
+  };
 
   const deleteCategory = (name) => {
     setCategories(categories.filter((cat) => cat.name !== name));
@@ -86,7 +97,12 @@ const Notes = () => {
                 New
               </button>
             </div>
-            <NotesList notes={dummyNotes} categories={categories} />
+            <NotesList
+              notes={notes}
+              handleDelete={deleteNote}
+              handleUpdate={updateNote}
+              categories={categories}
+            />
           </div>
         </div>
       </main>
