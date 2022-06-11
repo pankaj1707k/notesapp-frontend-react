@@ -18,7 +18,12 @@ const UpdateDeleteNoteModal = (props) => {
   };
 
   return (
-    <div className="modal fade" id="noteModal" tabIndex="-1" aria-hidden="true">
+    <div
+      className="modal fade"
+      id={"note" + props.note.id}
+      tabIndex="-1"
+      aria-hidden="true"
+    >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
