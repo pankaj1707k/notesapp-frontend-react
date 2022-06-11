@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CategoryList from "../components/CategoryList";
 import NotesList from "../components/NotesList";
 import AddNoteModal from "../components/AddNoteModal";
@@ -23,11 +23,17 @@ const Notes = () => {
     },
   ];
 
-  const categories = [
+  var dummyCategories = [
     { name: "category 1" },
     { name: "category 2" },
     { name: "category 3" },
   ];
+
+  var [categories, setCategories] = useState(dummyCategories);
+
+  const deleteCategory = (name) => {
+    setCategories(categories.filter((cat) => cat.name !== name));
+  };
 
   return (
     <>
@@ -57,7 +63,10 @@ const Notes = () => {
                     data-bs-target="#categoryModal"
                   ></i>
                 </h4>
-                <CategoryList />
+                <CategoryList
+                  categories={categories}
+                  handleDelete={deleteCategory}
+                />
               </div>
             </div>
           </div>
