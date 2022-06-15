@@ -6,8 +6,9 @@ import EditProfileModal from "../components/EditProfileModal";
 const Profile = () => {
   const profileData = {
     id: 1,
-    name: "FullName",
     username: "SomeUsername",
+    firstName: "First",
+    lastName: "Last",
     email: "user@test.com",
     phone: "1023456789",
     profile_img: DefaultProfilePic,
@@ -32,7 +33,9 @@ const Profile = () => {
           </div>
           <div className="col-sm-1"></div>
           <div className="col col-sm-7 ps-4 ps-sm-0 text-condensed-3">
-            <p className="fs-3 mb-2 text-condensed-2">{profile.name}</p>
+            <p className="fs-3 mb-2 text-condensed-2">
+              {profile.firstName + " " + profile.lastName}
+            </p>
             <p className="fs-5 mb-2">
               <i className="bi bi-at"></i>
               <span className="ms-3">{profile.username}</span>
