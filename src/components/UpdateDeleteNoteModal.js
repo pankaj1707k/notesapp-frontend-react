@@ -53,17 +53,11 @@ const UpdateDeleteNoteModal = (props) => {
               value={notebook}
               onChange={handleNotebook}
             >
-              {props.notebooks.map((nb) =>
-                nb.name === notebook ? (
-                  <option selected key={nb.name} value={nb.name}>
-                    {nb.name}
-                  </option>
-                ) : (
-                  <option key={nb.name} value={nb.name}>
-                    {nb.name}
-                  </option>
-                )
-              )}
+              {props.notebooks.map((nb) => (
+                <option key={nb.name} value={nb.name}>
+                  {nb.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="modal-footer">
