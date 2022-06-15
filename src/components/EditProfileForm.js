@@ -58,7 +58,7 @@ const EditProfileForm = (props) => {
       />
       <FormInputGroup
         icon="bi bi-envelope"
-        type="text"
+        type="email"
         name="Email"
         value={email}
         onChange={handleEmail}
