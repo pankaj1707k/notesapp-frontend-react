@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AddNoteModal = (props) => {
   var [noteContent, setNoteContent] = useState("");
-  var [category, setCategory] = useState("");
+  var [notebook, setNotebook] = useState("");
 
   const handleNoteContent = (e) => {
     setNoteContent(e.target.value);
   };
 
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
+  const handleNotebook = (e) => {
+    setNotebook(e.target.value);
   };
 
   const handleSubmit = (e) => {
     let id = Math.floor(Math.random() * 100); // remove if calling API
-    let newNote = { id: id, content: noteContent, category: category };
+    let newNote = { id: id, content: noteContent, notebook: notebook };
     props.handleCreate(newNote);
   };
 
@@ -45,13 +45,13 @@ const AddNoteModal = (props) => {
             />
             <select
               className="form-select mt-3"
-              value={category}
-              onChange={handleCategory}
+              value={notebook}
+              onChange={handleNotebook}
             >
-              <option value="">Select category</option>
-              {props.categories.map((category) => (
-                <option key={category.name} value={category.name}>
-                  {category.name}
+              <option value="">Select notebook</option>
+              {props.notebooks.map((notebook) => (
+                <option key={notebook.name} value={notebook.name}>
+                  {notebook.name}
                 </option>
               ))}
             </select>

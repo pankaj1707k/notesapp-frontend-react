@@ -1,4 +1,3 @@
-import React from "react";
 import NotesListItem from "./NotesListItem";
 
 const NotesList = (props) => {
@@ -8,7 +7,7 @@ const NotesList = (props) => {
       note={note}
       handleDelete={props.handleDelete}
       handleUpdate={props.handleUpdate}
-      categories={props.categories}
+      notebooks={props.notebooks}
     />
   ));
 

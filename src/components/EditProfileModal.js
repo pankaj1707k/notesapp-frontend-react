@@ -1,4 +1,3 @@
-import React from "react";
 import EditProfileForm from "./EditProfileForm";
 
 const EditProfileModal = (props) => {

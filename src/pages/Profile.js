@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DefaultProfilePic from "../assets/blank-profile-picture.png";
-import EditProfileModal from "../components/EditProfileModal";
 import ChangePasswordModal from "../components/ChangePasswordModal";
+import EditProfileModal from "../components/EditProfileModal";
 
 const Profile = () => {
   const profileData = {

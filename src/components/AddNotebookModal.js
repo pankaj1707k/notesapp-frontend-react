@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const AddCategoryModal = (props) => {
+const AddNotebookModal = (props) => {
   var [name, setName] = useState("");
 
   const handleName = (e) => {
@@ -8,21 +8,21 @@ const AddCategoryModal = (props) => {
   };
 
   const handleSubmit = (e) => {
-    let newCategory = { name: name };
-    props.handleCreate(newCategory);
+    let newNotebook = { name: name };
+    props.handleCreate(newNotebook);
   };
 
   return (
     <div
       className="modal fade"
-      id="categoryModal"
+      id="notebookModal"
       tabIndex="-1"
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">New Category</h5>
+            <h5 className="modal-title">New Notebook</h5>
             <button
               type="button"
               className="btn-close"
@@ -34,7 +34,7 @@ const AddCategoryModal = (props) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Category name"
+              placeholder="Notebook name"
               value={name}
               onChange={handleName}
             />
@@ -62,4 +62,4 @@ const AddCategoryModal = (props) => {
   );
 };
 
-export default AddCategoryModal;
+export default AddNotebookModal;

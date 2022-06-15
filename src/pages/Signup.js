@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FormInputGroup from "../components/FormInputGroup";
 
 const Signup = () => {

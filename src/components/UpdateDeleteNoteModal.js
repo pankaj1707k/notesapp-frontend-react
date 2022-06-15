@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const UpdateDeleteNoteModal = (props) => {
   var [noteContent, setNoteContent] = useState(props.note.content);
-  var [category, setCategory] = useState(props.note.category);
+  var [notebook, setNotebook] = useState(props.note.notebook);
 
   const handleNoteContent = (e) => {
     setNoteContent(e.target.value);
   };
 
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
+  const handleNotebook = (e) => {
+    setNotebook(e.target.value);
   };
 
   const handleUpdate = (e) => {
     let updatedNote = props.note;
     updatedNote.content = noteContent;
-    updatedNote.category = category;
+    updatedNote.notebook = notebook;
     props.handleUpdate(updatedNote);
   };
 
@@ -50,17 +50,17 @@ const UpdateDeleteNoteModal = (props) => {
             />
             <select
               className="form-select mt-3"
-              value={category}
-              onChange={handleCategory}
+              value={notebook}
+              onChange={handleNotebook}
             >
-              {props.categories.map((cat) =>
-                cat.name === category ? (
-                  <option selected key={cat.name} value={cat.name}>
-                    {cat.name}
+              {props.notebooks.map((nb) =>
+                nb.name === notebook ? (
+                  <option selected key={nb.name} value={nb.name}>
+                    {nb.name}
                   </option>
                 ) : (
-                  <option key={cat.name} value={cat.name}>
-                    {cat.name}
+                  <option key={nb.name} value={nb.name}>
+                    {nb.name}
                   </option>
                 )
               )}

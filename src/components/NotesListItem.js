@@ -1,4 +1,3 @@
-import React from "react";
 import UpdateDeleteNoteModal from "./UpdateDeleteNoteModal";
 
 const NotesListItem = (props) => {
@@ -15,7 +14,7 @@ const NotesListItem = (props) => {
         note={props.note}
         handleDelete={props.handleDelete}
         handleUpdate={props.handleUpdate}
-        categories={props.categories}
+        notebooks={props.notebooks}
       />
     </>
   );
