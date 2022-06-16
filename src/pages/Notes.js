@@ -7,6 +7,10 @@ import NotesList from "../components/NotesList";
 import { BASE_URL } from "../constants";
 
 const Notes = () => {
+  const headers = {
+    Authorization: `Token ${localStorage.getItem("authtoken")}`,
+  };
+
   var [notebooks, setNotebooks] = useState([]);
 
   var dummyNotes = [
@@ -31,9 +35,6 @@ const Notes = () => {
     const getNotebooks = async () => {
       try {
         const url = BASE_URL + "/notes/notebooks/";
-        const headers = {
-          Authorization: `Token ${localStorage.getItem("authtoken")}`,
-        };
         const response = await axios.get(url, { headers });
         setNotebooks(response.data);
       } catch (error) {
@@ -63,8 +64,14 @@ const Notes = () => {
     setNotebooks(notebooks.filter((nb) => nb.name !== name));
   };
 
-  const addNotebook = (notebook) => {
-    setNotebooks([...notebooks, notebook]);
+  const addNotebook = async (notebook) => {
+    try {
+      const url = BASE_URL + "/notes/notebooks/";
+      await axios.post(url, notebook, { headers });
+      setNotebooks([...notebooks, notebook]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
