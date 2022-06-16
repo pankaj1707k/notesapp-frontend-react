@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useState } from "react";
 import FormInputGroup from "../components/FormInputGroup";
+import { BASE_URL } from "../constants";
 
 const Login = () => {
   var [username, setUsername] = useState("");
@@ -13,10 +15,15 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ username, password });
-    // API call to register user
+    try {
+      const url = BASE_URL + "/users/login/";
+      const response = await axios.post(url, { username, password });
+      localStorage.setItem("authtoken", response.data.token);
+    } catch (error) {
+      console.log(error);
+    }
     setUsername("");
     setPassword("");
   };
