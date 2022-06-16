@@ -1,10 +1,14 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import AddNotebookModal from "../components/AddNotebookModal";
 import AddNoteModal from "../components/AddNoteModal";
 import NotebookList from "../components/NotebookList";
 import NotesList from "../components/NotesList";
+import { BASE_URL } from "../constants";
 
 const Notes = () => {
+  var [notebooks, setNotebooks] = useState([]);
+
   var dummyNotes = [
     {
       id: 1,
@@ -23,14 +27,23 @@ const Notes = () => {
     },
   ];
 
-  var dummyNotebooks = [
-    { name: "notebook 1" },
-    { name: "notebook 2" },
-    { name: "notebook 3" },
-  ];
+  useEffect(() => {
+    const getNotebooks = async () => {
+      try {
+        const url = BASE_URL + "/notes/notebooks/";
+        const headers = {
+          Authorization: `Token ${localStorage.getItem("authtoken")}`,
+        };
+        const response = await axios.get(url, { headers });
+        setNotebooks(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getNotebooks();
+  });
 
   var [notes, setNotes] = useState(dummyNotes);
-  var [notebooks, setNotebooks] = useState(dummyNotebooks);
 
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
