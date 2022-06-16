@@ -6,6 +6,7 @@ const NotebookList = (props) => {
       key={notebook.name}
       notebook={notebook}
       handleDelete={props.handleDelete}
+      getNotes={props.getNotes}
     />
   ));
   return <ul className="list-no-bullets px-1 mt-3">{listItems}</ul>;

@@ -1,6 +1,9 @@
 const NotebookListItem = (props) => {
   return (
-    <li className="fs-5 d-flex justify-content-between mb-1">
+    <li
+      className="fs-5 d-flex justify-content-between mb-1 cursor-pointer"
+      onClick={() => props.getNotes(props.notebook.id)}
+    >
       <p className="mb-0">{props.notebook.name}</p>
       <i
         className="bi bi-trash3-fill cursor-pointer text-danger"

@@ -12,24 +12,7 @@ const Notes = () => {
   };
 
   var [notebooks, setNotebooks] = useState([]);
-
-  var dummyNotes = [
-    {
-      id: 1,
-      content: "Sample note 1",
-      notebook: "notebook 1",
-    },
-    {
-      id: 2,
-      content: "Sample note 2",
-      notebook: "notebook 2",
-    },
-    {
-      id: 3,
-      content: "Sample note 3",
-      notebook: "notebook 3",
-    },
-  ];
+  var [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const getNotebooks = async () => {
@@ -44,7 +27,15 @@ const Notes = () => {
     getNotebooks();
   });
 
-  var [notes, setNotes] = useState(dummyNotes);
+  const getNotes = async (nb) => {
+    try {
+      const url = BASE_URL + `/notes/notebooks/${nb}/notes/`;
+      const response = await axios.get(url, { headers });
+      setNotes(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const deleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
@@ -111,6 +102,7 @@ const Notes = () => {
                 <NotebookList
                   notebooks={notebooks}
                   handleDelete={deleteNotebook}
+                  getNotes={getNotes}
                 />
               </div>
             </div>
