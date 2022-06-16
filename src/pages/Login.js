@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInputGroup from "../components/FormInputGroup";
 import { BASE_URL } from "../constants";
 
-const Login = () => {
+const Login = (props) => {
   var [username, setUsername] = useState("");
   var [password, setPassword] = useState("");
+  var navigate = useNavigate();
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -21,6 +23,8 @@ const Login = () => {
       const url = BASE_URL + "/users/login/";
       const response = await axios.post(url, { username, password });
       localStorage.setItem("authtoken", response.data.token);
+      props.setAuth(true);
+      navigate("/notes");
     } catch (error) {
       console.log(error);
     }

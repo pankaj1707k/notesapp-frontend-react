@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInputGroup from "../components/FormInputGroup";
 import { BASE_URL } from "../constants";
 
-const Signup = () => {
+const Signup = (props) => {
   var [username, setUsername] = useState("");
   var [email, setEmail] = useState("");
   var [password, setPassword] = useState("");
+
+  var navigate = useNavigate();
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -26,6 +29,8 @@ const Signup = () => {
       const url = BASE_URL + "/users/register/";
       const response = await axios.post(url, { username, email, password });
       localStorage.setItem("authtoken", response.data.token);
+      props.setAuth(true);
+      navigate("/notes");
     } catch (error) {
       console.log(error);
     }
