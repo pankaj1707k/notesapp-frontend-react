@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import NavbarToggler from "./NavbarToggler";
 import NavList from "./NavList";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
       <div className="container">
@@ -14,7 +14,7 @@ const Header = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <NavList />
+          <NavList auth={props.auth} setAuth={props.setAuth} />
         </div>
       </div>
     </nav>
