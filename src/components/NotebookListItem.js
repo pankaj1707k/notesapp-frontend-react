@@ -4,7 +4,7 @@ const NotebookListItem = (props) => {
       <p className="mb-0">{props.notebook.name}</p>
       <i
         className="bi bi-trash3-fill cursor-pointer text-danger"
-        onClick={() => props.handleDelete(props.notebook.name)}
+        onClick={() => props.handleDelete(props.notebook.id)}
       ></i>
     </li>
   );

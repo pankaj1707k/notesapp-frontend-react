@@ -60,8 +60,14 @@ const Notes = () => {
     setNotes([newNote, ...notes]);
   };
 
-  const deleteNotebook = (name) => {
-    setNotebooks(notebooks.filter((nb) => nb.name !== name));
+  const deleteNotebook = async (id) => {
+    try {
+      const url = BASE_URL + `/notes/notebooks/${id}/`;
+      await axios.delete(url, { headers });
+      setNotebooks(notebooks.filter((nb) => nb.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const addNotebook = async (notebook) => {
