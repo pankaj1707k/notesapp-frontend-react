@@ -4,10 +4,10 @@ import FormInputGroup from "./FormInputGroup";
 const EditProfileForm = (props) => {
   var [username, setUsername] = useState(props.data.username);
   var [email, setEmail] = useState(props.data.email);
-  var [firstName, setFirstName] = useState(props.data.firstName);
-  var [lastName, setLastName] = useState(props.data.lastName);
-  var [phone, setPhone] = useState(props.data.phone);
-  var [profileImg, setProfileImg] = useState("");
+  var [first_name, setFirstName] = useState(props.data.first_name);
+  var [last_name, setLastName] = useState(props.data.last_name);
+  var [phone, setPhone] = useState(props.data.profile.phone);
+  var [avatar, setAvatar] = useState();
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -29,22 +29,20 @@ const EditProfileForm = (props) => {
     setPhone(e.target.value);
   };
 
-  const handleProfileImg = (e) => {
-    setProfileImg(e.target.value);
+  const handleAvatar = (e) => {
+    setAvatar(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let profile = {
-      username: username,
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-      profile_img: profileImg !== "" ? profileImg : props.data.profile_img,
-    };
+    let profile = new FormData();
+    profile.append("username", username);
+    profile.append("email", email);
+    profile.append("first_name", first_name);
+    profile.append("last_name", last_name);
+    profile.append("profile.phone", phone);
+    profile.append("profile.avatar", avatar);
     props.handleUpdate(profile);
-    setProfileImg("");
   };
 
   return (
@@ -67,14 +65,14 @@ const EditProfileForm = (props) => {
         icon="bi bi-card-heading"
         type="text"
         name="First name"
-        value={firstName}
+        value={first_name}
         onChange={handleFirstName}
       />
       <FormInputGroup
         icon="bi bi-card-heading"
         type="text"
         name="Last name"
-        value={lastName}
+        value={last_name}
         onChange={handleLastName}
       />
       <FormInputGroup
@@ -88,8 +86,7 @@ const EditProfileForm = (props) => {
         icon="bi bi-card-image"
         type="file"
         name="ProfilePicture"
-        value={profileImg}
-        onChange={handleProfileImg}
+        onChange={handleAvatar}
       />
       <button
         type="submit"

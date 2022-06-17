@@ -1,23 +1,52 @@
-import { useState } from "react";
-import DefaultProfilePic from "../assets/blank-profile-picture.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 import EditProfileModal from "../components/EditProfileModal";
+import { BASE_URL } from "../constants";
 
 const Profile = () => {
-  const profileData = {
-    id: 1,
-    username: "SomeUsername",
-    firstName: "First",
-    lastName: "Last",
-    email: "user@test.com",
-    phone: "1023456789",
-    profile_img: DefaultProfilePic,
+  const headers = {
+    Authorization: `Token ${localStorage.getItem("authtoken")}`,
   };
 
-  var [profile, setProfile] = useState(profileData);
+  const initial = {
+    username: "",
+    email: "",
+    first_name: "",
+    last_name: "",
+    profile: {
+      phone: "",
+      avatar: "",
+    },
+  };
 
-  const updateProfile = (updatedProfile) => {
-    setProfile(updatedProfile);
+  var [profile, setProfile] = useState(initial);
+
+  useEffect(() => {
+    const headers = {
+      Authorization: `Token ${localStorage.getItem("authtoken")}`,
+    };
+
+    const getUserData = async () => {
+      try {
+        const url = BASE_URL + "/users/retrieve/";
+        const response = await axios.get(url, { headers });
+        setProfile(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserData();
+  }, []);
+
+  const updateProfile = async (updatedProfile) => {
+    try {
+      const url = BASE_URL + "/users/update/";
+      const response = await axios.patch(url, updatedProfile, { headers });
+      setProfile(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -26,7 +55,7 @@ const Profile = () => {
         <div className="row mt-4">
           <div className="col mx-auto col-sm-4 mb-4">
             <img
-              src={profile.profile_img}
+              src={profile.profile.avatar}
               alt="blank-profile"
               className="img-thumbnail"
             />
@@ -34,7 +63,7 @@ const Profile = () => {
           <div className="col-sm-1"></div>
           <div className="col col-sm-7 ps-4 ps-sm-0 text-condensed-3">
             <p className="fs-3 mb-2 text-condensed-2">
-              {profile.firstName + " " + profile.lastName}
+              {profile.first_name + " " + profile.last_name}
             </p>
             <p className="fs-5 mb-2">
               <i className="bi bi-at"></i>
@@ -46,7 +75,7 @@ const Profile = () => {
             </p>
             <p className="fs-5 mb-2">
               <i className="bi bi-telephone"></i>
-              <span className="ms-3">{profile.phone}</span>
+              <span className="ms-3">{profile.profile.phone}</span>
             </p>
           </div>
         </div>
