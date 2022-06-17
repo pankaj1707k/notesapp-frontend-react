@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ChangePasswordModal from "../components/ChangePasswordModal";
 import EditProfileModal from "../components/EditProfileModal";
 import { BASE_URL } from "../constants";
 
-const Profile = () => {
+const Profile = (props) => {
   const headers = {
     Authorization: `Token ${localStorage.getItem("authtoken")}`,
   };
@@ -44,6 +45,20 @@ const Profile = () => {
       const url = BASE_URL + "/users/update/";
       const response = await axios.patch(url, updatedProfile, { headers });
       setProfile(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  var navigate = useNavigate();
+
+  const deleteAccount = async () => {
+    try {
+      const url = BASE_URL + "/users/delete/";
+      await axios.delete(url, { headers });
+      navigate("/");
+      localStorage.removeItem("authtoken");
+      props.setAuth(false);
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +116,11 @@ const Profile = () => {
             </button>
           </div>
           <div className="col-12 col-sm-4">
-            <button type="button" className="btn btn-danger w-100">
+            <button
+              type="button"
+              className="btn btn-danger w-100"
+              onClick={deleteAccount}
+            >
               Delete Account
             </button>
           </div>

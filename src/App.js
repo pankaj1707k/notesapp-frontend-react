@@ -19,7 +19,7 @@ const App = () => {
         <Route path="signup" element={<Signup setAuth={setAuth} />} />
         <Route path="login" element={<Login setAuth={setAuth} />} />
         <Route path="notes" element={<Notes />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<Profile setAuth={setAuth} />} />
       </Routes>
     </>
   );
