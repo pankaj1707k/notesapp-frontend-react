@@ -1,7 +1,13 @@
+import axios from "axios";
 import { useState } from "react";
+import { BASE_URL } from "../constants";
 import FormInputGroup from "./FormInputGroup";
 
 const ChangePasswordForm = () => {
+  const headers = {
+    Authorization: `Token ${localStorage.getItem("authtoken")}`,
+  };
+
   var [oldPassword, setOldPassword] = useState("");
   var [newPassword, setNewPassword] = useState("");
   var [confirmPassword, setConfirmPassword] = useState("");
@@ -18,10 +24,21 @@ const ChangePasswordForm = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(newPassword);
-    // API call to update password
+
+    // Build data
+    let data = new FormData();
+    data.append("old_password", oldPassword);
+    data.append("new_password", newPassword);
+    data.append("new_password_confirm", confirmPassword);
+
+    try {
+      const url = BASE_URL + "/users/update/password/";
+      await axios.put(url, data, { headers });
+    } catch (error) {
+      console.log(error);
+    }
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
@@ -50,7 +67,11 @@ const ChangePasswordForm = () => {
         value={confirmPassword}
         onChange={handleConfirmPassword}
       />
-      <button type="submit" className="btn btn-primary w-100">
+      <button
+        type="submit"
+        className="btn btn-primary w-100"
+        data-bs-dismiss="modal"
+      >
         Update
       </button>
     </form>
