@@ -13,8 +13,7 @@ const AddNoteModal = (props) => {
   };
 
   const handleSubmit = (e) => {
-    let id = Math.floor(Math.random() * 100); // remove if calling API
-    let newNote = { id: id, content: noteContent, notebook: notebook };
+    let newNote = { content: noteContent, notebook: notebook };
     props.handleCreate(newNote);
   };
 
@@ -50,7 +49,7 @@ const AddNoteModal = (props) => {
             >
               <option value="">Select notebook</option>
               {props.notebooks.map((notebook) => (
-                <option key={notebook.name} value={notebook.name}>
+                <option key={notebook.id} value={notebook.id}>
                   {notebook.name}
                 </option>
               ))}

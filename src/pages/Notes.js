@@ -25,7 +25,7 @@ const Notes = () => {
       }
     };
     getNotebooks();
-  });
+  }, []);
 
   const getNotes = async (nb) => {
     try {
@@ -37,18 +37,35 @@ const Notes = () => {
     }
   };
 
-  const deleteNote = (id) => {
+  const deleteNote = async (id) => {
+    try {
+      const url = BASE_URL + `/notes/notebooks/notes/${id}/`;
+      await axios.delete(url, { headers });
+    } catch (error) {
+      console.log(error);
+    }
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  const updateNote = (updatedNote) => {
+  const updateNote = async (updatedNote) => {
+    try {
+      const url = BASE_URL + `/notes/notebooks/notes/${updatedNote.id}/`;
+      await axios.patch(url, updatedNote, { headers });
+    } catch (error) {
+      console.log(error);
+    }
     let notelist = notes.filter((note) => note.id !== updatedNote.id);
     notelist = [updatedNote, ...notelist];
     setNotes(notelist);
   };
 
-  const addNote = (newNote) => {
-    setNotes([newNote, ...notes]);
+  const addNote = async (newNote) => {
+    try {
+      const url = BASE_URL + `/notes/notebooks/${newNote.notebook}/notes/`;
+      await axios.post(url, newNote, { headers });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteNotebook = async (id) => {

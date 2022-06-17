@@ -54,7 +54,7 @@ const UpdateDeleteNoteModal = (props) => {
               onChange={handleNotebook}
             >
               {props.notebooks.map((nb) => (
-                <option key={nb.name} value={nb.name}>
+                <option key={nb.name} value={nb.id}>
                   {nb.name}
                 </option>
               ))}
@@ -72,6 +72,7 @@ const UpdateDeleteNoteModal = (props) => {
             <button
               type="button"
               className="btn btn-danger"
+              data-bs-dismiss="modal"
               onClick={handleDelete}
             >
               Delete
